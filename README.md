@@ -3,57 +3,36 @@
 
 ### Smart household water refill recommendations using LangChain and Fuzzy Logic
 
-An AI-based college mini project that helps households determine how urgently their water tank needs to be refilled.
+**AI-Based Smart Water Tank Refill Advisor** is a web-based college mini project that helps households determine how urgently their water tank needs to be refilled.
 
-The system accepts both natural-language and manual inputs. Natural-language input is processed using **LangChain and OpenAI**, while the actual refill urgency is calculated using a genuine **Mamdani Fuzzy Logic** inference system.
+The system supports both **manual input** and **natural-language input**. Natural-language input is processed using **LangChain and OpenAI**, while the actual refill urgency is calculated using a **Mamdani Fuzzy Logic** inference system.
 
-The fuzzy logic engine produces the authoritative numeric urgency score, while LangChain is used for natural-language extraction and explanation.
+The fuzzy logic engine generates the numeric urgency score, while LangChain is used for natural-language information extraction and AI-generated explanations.
 
 ---
 
 ## 🚀 Main Features
 
-### 🗣️ Natural Language Input
-
-- Describe the household water situation in plain English.
-- LangChain extracts:
-  - Tank capacity
-  - Current tank level
-  - Household size
-  - Water usage
-- Extracted information is validated before being sent to the fuzzy engine.
-
-### 🎛️ Manual Input Mode
-
-- Enter tank information manually.
-- Input fields include:
-  - Tank capacity
-  - Current tank level
-  - Household size
-  - Water usage
-- Works without an OpenAI API key.
+- 🗣️ **Natural Language Input**
+- 🎛️ **Manual Input Mode**
+- 🧮 **Mamdani Fuzzy Logic-based Urgency Calculation**
+- 📊 **Refill Urgency Score from 0–100**
+- 📈 **Very Low, Low, Medium, High and Very High Categories**
+- 🔍 **Fuzzy Analysis**
+- 📊 **Membership Function Visualizations**
+- 🤖 **AI-generated Recommendations using LangChain**
+- 🛡️ **Input Validation**
+- 📱 **Mobile-Friendly Streamlit Interface**
 
 ### 🧮 Mamdani Fuzzy Logic
 
-The project implements a genuine five-stage Mamdani fuzzy inference process:
+The project implements a five-stage Mamdani fuzzy inference process:
 
 1. Fuzzification
 2. Rule Evaluation
 3. Implication
 4. Aggregation
 5. Centroid Defuzzification
-
-### 📊 Refill Urgency Score
-
-The system calculates a refill urgency score from **0–100**.
-
-The result is categorized as:
-
-- Very Low
-- Low
-- Medium
-- High
-- Very High
 
 ### 🔍 Fuzzy Analysis
 
@@ -64,30 +43,14 @@ The application displays:
 - Rule firing strengths
 - Fuzzy output analysis
 
-### 📈 Membership Function Visualizations
+### 📈 Membership Function Visualization
 
-The project provides graphical visualizations of the membership functions for:
+The application provides membership function visualizations for:
 
 - Tank Level
 - Water Usage
 - Household Size
 - Refill Urgency
-
-### 🤖 AI-Generated Recommendation
-
-LangChain generates a simple natural-language explanation of the fuzzy result.
-
-The LLM does not change or override the numeric fuzzy result.
-
-### 🛡️ Input Validation
-
-- Validates user inputs.
-- Handles missing information.
-- Handles invalid values gracefully.
-
-### 📱 Mobile-Friendly UI
-
-The application is built using Streamlit and provides a simple interface suitable for desktop and mobile browsers.
 
 ---
 
@@ -109,56 +72,67 @@ The application is built using Streamlit and provides a simple interface suitabl
 
 ---
 
-## 📁 Project Structure
+## 🧠 How It Works
 
 ```text
-smart-water-tank-refill-advisor/
-│
-├── app.py
-├── requirements.txt
-├── README.md
-├── .gitignore
-├── .env.example
-│
-├── .streamlit/
-│   ├── config.toml
-│   └── secrets.toml.example
-│
-├── fuzzy/
-│   ├── membership.py
-│   ├── rules.py
-│   └── inference.py
-│
-├── ai/
-│   ├── extractor.py
-│   ├── prompts.py
-│   └── explainer.py
-│
-├── utils/
-│   ├── validation.py
-│   └── helpers.py
-│
-├── ui/
-│   ├── components.py
-│   └── charts.py
-│
-├── docs/
-│   ├── project_report.md
-│   ├── fuzzy_rules.md
-│   └── viva_questions.md
-│
-└── assets/
-    ├── FUZZYANALYSIS.png
-    ├── FUZZYOUTPUT.png
-    ├── MANUALINPUT.png
-    ├── MFV.png
-    ├── NLI(AI).png
-    └── RESULTS.png
-````
+                         USER INPUT
+                              │
+              ┌───────────────┴───────────────┐
+              │                               │
+              ▼                               ▼
+     Natural Language Input            Manual Input
+              │                               │
+              ▼                               │
+       LangChain Extraction                   │
+              │                               │
+              ▼                               │
+       Structured Information                 │
+              │                               │
+              └───────────────┬───────────────┘
+                              ▼
+                     Input Validation
+                              │
+                              ▼
+                  Mamdani Fuzzy Inference
+                              │
+              ┌───────────────┼───────────────┐
+              │               │               │
+              ▼               ▼               ▼
+        Fuzzification   Rule Evaluation   Implication
+              │               │               │
+              └───────────────┼───────────────┘
+                              ▼
+                         Aggregation
+                              │
+                              ▼
+                  Centroid Defuzzification
+                              │
+                              ▼
+                    Refill Urgency Score
+                           0 – 100
+                              │
+                              ▼
+                     Urgency Category
+                              │
+                              ▼
+                    AI Recommendation
+                              │
+                              ▼
+                       FINAL RESULT
+```
+
+The **fuzzy logic engine** is responsible for calculating the actual numeric refill urgency score.
+
+LangChain is used for:
+
+- Natural-language information extraction
+- AI-generated explanation and recommendation
+
+The LLM does not modify or override the fuzzy logic score.
 
 ---
 
-## ⚙️ Installation and Setup
+## ⚙️ Installation & Setup
 
 ### 1. Clone the Repository
 
@@ -166,7 +140,7 @@ smart-water-tank-refill-advisor/
 git clone https://github.com/<your-username>/smart-water-tank-refill-advisor.git
 ```
 
-### 2. Open the Project Folder
+### 2. Navigate to the Project Directory
 
 ```bash
 cd smart-water-tank-refill-advisor
@@ -198,9 +172,7 @@ pip install -r requirements.txt
 
 ## 🔐 Environment Variables
 
-The project uses an OpenAI API key for the natural-language extraction and AI explanation features.
-
-### Local Development
+The project uses an OpenAI API key for natural-language extraction and AI-generated explanations.
 
 Create a `.env` file using `.env.example`.
 
@@ -208,68 +180,78 @@ Create a `.env` file using `.env.example`.
 OPENAI_API_KEY=your_openai_api_key_here
 ```
 
-**Important:** Never upload your real API key to GitHub.
-
-The `.env` file should remain inside `.gitignore`.
-
-### Streamlit Community Cloud
-
-Add the following secret in the Streamlit application settings:
+For Streamlit Community Cloud:
 
 ```toml
 OPENAI_API_KEY = "your_openai_api_key_here"
 ```
 
-Replace the placeholder only inside the secure Streamlit Secrets settings.
+> **Important:** Never upload your actual API key to GitHub.
+
+Add `.env` to `.gitignore`:
+
+```text
+.env
+```
 
 ---
 
 ## ▶️ How to Run the Project
 
-After completing the installation, run:
+From the project root directory, run:
 
 ```bash
 streamlit run app.py
 ```
 
-Streamlit will provide a local URL, normally:
+The application will normally be available at:
 
 ```text
 http://localhost:8501
 ```
 
-Open this URL in your web browser.
+Open the URL in your web browser.
 
 ---
 
-## 🧑‍💻 How to Use the Project
+## 🧪 How to Use the Project
 
-### Option 1 — Manual Input
+### Step 1 — Select Input Mode
 
-1. Open the application.
-2. Select **Manual Input**.
-3. Enter the required information:
+The application provides two input options:
 
-   * Tank capacity
-   * Current tank level
-   * Household size
-   * Water usage
-4. Submit the information.
-5. The fuzzy inference engine processes the inputs.
-6. The application calculates the **Refill Urgency Score**.
-7. View the urgency category.
-8. Open the fuzzy analysis section to inspect membership values and activated rules.
-9. View the membership function charts.
-10. Read the recommendation.
-
-Manual input mode works without an OpenAI API key.
+```text
+Manual Input
+Natural Language Input
+```
 
 ---
 
-### Option 2 — Natural Language Input
+### Step 2 — Manual Input
 
-1. Select **Natural Language Input**.
-2. Describe the household water situation.
+Enter the following information:
+
+- Tank capacity
+- Current tank level
+- Household size
+- Water usage
+
+Submit the information to calculate the refill urgency.
+
+The fuzzy inference engine then calculates:
+
+- Refill urgency score
+- Urgency category
+- Fuzzy analysis
+- Recommendation
+
+Manual input works without an OpenAI API key.
+
+---
+
+### Step 3 — Natural Language Input
+
+Select **Natural Language Input** and describe the household water situation in plain English.
 
 Example:
 
@@ -279,236 +261,74 @@ The tank capacity is 1000 litres and it is around 30% full.
 We use a lot of water for bathing, washing clothes and cleaning.
 ```
 
-3. LangChain extracts the required information.
-4. The extracted information is validated.
-5. The fuzzy inference engine calculates the urgency score.
-6. LangChain generates a plain-language explanation.
-7. The final result is displayed in the application.
+LangChain extracts the required information and validates it before sending the data to the fuzzy inference engine.
+
+The system then calculates the urgency score and generates an AI-based explanation.
 
 ---
 
-## 🧠 How the System Works
+## 📸 Screenshots
 
-```text
-                         USER INPUT
-                             │
-              ┌──────────────┴──────────────┐
-              │                             │
-              ▼                             ▼
-     Natural Language                  Manual Input
-              │                             │
-              ▼                             │
-       LangChain Extraction                 │
-              │                             │
-              ▼                             │
-       Structured Data                      │
-              │                             │
-              └──────────────┬──────────────┘
-                             ▼
-                     Input Validation
-                             │
-                             ▼
-                 Mamdani Fuzzy Inference
-                             │
-              ┌──────────────┼──────────────┐
-              │              │              │
-              ▼              ▼              ▼
-        Fuzzification   Rule Evaluation   Implication
-              │              │              │
-              └──────────────┼──────────────┘
-                             ▼
-                        Aggregation
-                             │
-                             ▼
-                  Centroid Defuzzification
-                             │
-                             ▼
-                  Refill Urgency Score
-                         0 – 100
-                             │
-                             ▼
-                    Urgency Category
-                             │
-                             ▼
-                  LangChain Explanation
-                             │
-                             ▼
-                       FINAL RESULT
-```
+### 🎛️ Manual Input
 
-### Important Architecture Principle
+<p align="center">
+  <img src="screenshots/MANUALINPUT.png" width="48%" alt="Manual Input" />
+</p>
 
-The **fuzzy logic engine is responsible for the actual numeric decision**.
+### 🗣️ Natural Language Input
 
-LangChain is used for:
+<p align="center">
+  <img src="screenshots/NLI(AI).png" width="48%" alt="Natural Language Input" />
+</p>
 
-* Natural-language information extraction
-* Natural-language explanation
+### 🔍 Fuzzy Analysis
 
-The LLM does not modify the fuzzy engine's numeric score or urgency category.
+<p align="center">
+  <img src="screenshots/FUZZYANALYSIS.png" width="48%" alt="Fuzzy Analysis" />
+</p>
 
----
+### 📊 Fuzzy Output
 
-# 📸 Screenshots
+<p align="center">
+  <img src="screenshots/FUZZYOUTPUT.png" width="48%" alt="Fuzzy Output" />
+</p>
 
-## 1. Manual Input
+### 📈 Membership Function Visualization
 
-The manual input interface allows the user to enter tank capacity, tank level, household size, and water usage.
+<p align="center">
+  <img src="screenshots/MFV.png" width="48%" alt="Membership Function Visualization" />
+</p>
 
-![Manual Input](assets/MANUALINPUT.png)
+### 📋 Final Results
 
----
-
-## 2. Natural Language Input
-
-The Natural Language Input interface allows the user to describe their household water situation in plain English.
-
-![Natural Language Input](assets/NLI\(AI\).png)
-
----
-
-## 3. Fuzzy Analysis
-
-The Fuzzy Analysis section displays the membership values and activated fuzzy rules used by the inference engine.
-
-![Fuzzy Analysis](assets/FUZZYANALYSIS.png)
-
----
-
-## 4. Fuzzy Output
-
-The fuzzy output visualization shows the aggregated fuzzy output and the defuzzified result.
-
-![Fuzzy Output](assets/FUZZYOUTPUT.png)
-
----
-
-## 5. Membership Function Visualization
-
-The application provides graphical membership-function visualizations used by the fuzzy inference system.
-
-![Membership Function Visualization](assets/MFV.png)
-
----
-
-## 6. Final Results
-
-The Results section displays the calculated refill urgency score, urgency category, and recommendation.
-
-![Final Results](assets/RESULTS.png)
+<p align="center">
+  <img src="screenshots/RESULTS.png" width="48%" alt="Final Results" />
+</p>
 
 ---
 
 ## 🌐 Live Deployment
 
-### 🚀 Live Application
+🚀 **Try the AI-Based Smart Water Tank Refill Advisor Online:**
 
-**[Open Live Project](https://smart-water-tank-refill-advisor-jjq84sm7torpoayc7huetm.streamlit.app/)**
+https://smart-water-tank-refill-advisor-jjq84sm7torpoayc7huetm.streamlit.app/
 
-The application is deployed using **Streamlit Community Cloud**.
-
----
-
-## 📌 Project Objectives
-
-* Build a genuine Mamdani fuzzy inference system.
-* Use fuzzy logic instead of simple fixed percentage thresholds.
-* Use LangChain for natural-language information extraction.
-* Generate understandable AI-based recommendations.
-* Support both manual and natural-language input.
-* Provide a simple and mobile-friendly Streamlit interface.
-* Demonstrate the practical combination of:
-
-  * Artificial Intelligence
-  * Natural Language Processing
-  * Fuzzy Logic
-
----
-
-## 🔄 System Workflow
-
-```text
-User
- │
- ├── Manual Input
- │
- └── Natural Language Input
-          │
-          ▼
-      LangChain
-          │
-          ▼
-  Structured Information
-          │
-          ▼
-   Input Validation
-          │
-          ▼
-   Fuzzy Inference
-          │
-          ▼
-  Urgency Score (0–100)
-          │
-          ▼
-  Urgency Category
-          │
-          ▼
-  AI Explanation
-          │
-          ▼
-     Final Result
-```
-
----
-
-## 🔮 Future Scope
-
-* Integration with IoT-based ultrasonic water-level sensors.
-* Automatic real-time tank-level monitoring.
-* Water consumption prediction using historical data.
-* Multi-tank and multi-household support.
-* Database integration for historical records.
-* Support for additional LLM providers through LangChain.
-* Mobile application integration.
-* Historical water usage analysis.
-* Automatic refill notifications.
-
----
-
-## ⚠️ Limitations
-
-* Water usage is currently represented as Low, Medium, or High rather than exact litres/day.
-* The application does not currently maintain historical usage data.
-* Natural-language mode requires an internet connection and a valid OpenAI API key.
-* Manual mode works without an API key.
-* The system currently provides recommendations rather than directly controlling a physical water pump.
+> The application is deployed using **Streamlit Community Cloud**.
 
 ---
 
 ## 👨‍🎓 Student Details
 
-| Field         | Details                                      |
-| ------------- | -------------------------------------------- |
-| Student Name  | **RAJESH GAIKWAD**                           |
-| Roll Number   | **19011**                                    |
-| Course        | **B.Sc. Information Technology**             |
-| Project Type  | **College Mini Project**                     |
-| Project Title | **AI-Based Smart Water Tank Refill Advisor** |
+| Information | Details |
+|---|---|
+| **Name** | RAJESH GAIKWAD |
+| **Roll No.** | 19011 |
+| **Course** | B.Sc. Information Technology |
+| **Project Type** | College Mini Project |
+| **Project Title** | AI-Based Smart Water Tank Refill Advisor |
 
 ---
 
-## 👤 Author
+## ⭐ AI-Based Smart Water Tank Refill Advisor
 
-**RAJESH GAIKWAD**
-
-**Roll Number:** 19011
-
-**Course:** B.Sc. Information Technology
-
-**Project:** AI-Based Smart Water Tank Refill Advisor
-
----
-
-## 📄 License
-
-This project was developed as a **college mini project** for educational purposes.
+**Smart water refill recommendations using AI and Fuzzy Logic.**
